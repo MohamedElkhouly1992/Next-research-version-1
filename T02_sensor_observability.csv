@@ -1,0 +1,6 @@
+measurement,observed_rows,coverage_pct,primarily_informs_component
+chiller_COP,500,100.0,compressor
+coil_UA_ratio,500,100.0,coil
+filter_dp_Pa,500,100.0,filter
+fan_eff_ratio,500,100.0,fan
+pump_eff_ratio,500,100.0,pump

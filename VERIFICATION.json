@@ -1,0 +1,18 @@
+{
+  "engine_syntax": true,
+  "streamlit_syntax": true,
+  "demo_completed": true,
+  "digital_twin_output": true,
+  "rul_output": true,
+  "pareto_output": true,
+  "s0_s4_output": true,
+  "figure_count": 7,
+  "strategies_present": [
+    "S0",
+    "S1",
+    "S2",
+    "S3",
+    "S4"
+  ],
+  "streamlit_runtime_smoke_test": "not executed in build container because streamlit package is not installed there; requirements.txt includes streamlit and both Python files passed py_compile."
+}

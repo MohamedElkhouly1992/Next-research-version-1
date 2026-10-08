@@ -1,0 +1,180 @@
+{
+  "software": "S4 Maintenance 4.0 Research Software",
+  "version": "1.0.0",
+  "timestep_hours": 24.0,
+  "twin_config": {
+    "critical_physical": {
+      "compressor": 0.25,
+      "coil": 0.12,
+      "filter": 1.0,
+      "fan": 0.08,
+      "pump": 0.17
+    },
+    "annual_rate_prior": {
+      "compressor": [
+        0.0025,
+        0.01,
+        0.014
+      ],
+      "coil": [
+        0.0025,
+        0.005,
+        0.01
+      ],
+      "filter": [
+        0.5,
+        1.0,
+        4.0
+      ],
+      "fan": [
+        0.002,
+        0.0035,
+        0.005
+      ],
+      "pump": [
+        0.008,
+        0.0105,
+        0.013
+      ]
+    },
+    "irreversible_fraction": {
+      "compressor": 0.75,
+      "coil": 0.15,
+      "filter": 0.0,
+      "fan": 0.5,
+      "pump": 0.5
+    },
+    "remaining_reversible_after_service": {
+      "compressor": 0.25,
+      "coil": 0.05,
+      "filter": 0.03,
+      "fan": 0.15,
+      "pump": 0.15
+    },
+    "severity_factor": 1.0,
+    "nominal_cop": 4.5,
+    "clean_filter_dp_pa": 150.0,
+    "final_filter_dp_ratio": 3.0,
+    "coil_ua_shape": 1.0,
+    "coil_energy_coupling": 0.5,
+    "filter_system_pressure_share": 0.2,
+    "process_noise_sd": 0.003,
+    "initial_state_sd": 0.08,
+    "measurement_rel_sd": 0.03,
+    "max_state": 1.5
+  },
+  "economic_config": {
+    "electricity_tariff": 0.12,
+    "emission_factor_kg_per_kwh": 0.45,
+    "maintenance_cost": {
+      "compressor": 1200.0,
+      "coil": 500.0,
+      "filter": 120.0,
+      "fan": 450.0,
+      "pump": 550.0
+    },
+    "downtime_cost": {
+      "compressor": 900.0,
+      "coil": 250.0,
+      "filter": 40.0,
+      "fan": 250.0,
+      "pump": 300.0
+    },
+    "failure_cost": {
+      "compressor": 12000.0,
+      "coil": 3000.0,
+      "filter": 800.0,
+      "fan": 3500.0,
+      "pump": 4500.0
+    }
+  },
+  "control_config": {
+    "zone_setpoint_bounds": [
+      22.0,
+      26.0
+    ],
+    "chw_setpoint_bounds": [
+      5.0,
+      9.0
+    ],
+    "fan_command_bounds": [
+      0.5,
+      1.0
+    ],
+    "pump_command_bounds": [
+      0.5,
+      1.0
+    ],
+    "reference_zone_setpoint": 24.0,
+    "reference_chw_setpoint": 6.0,
+    "reference_fan_command": 1.0,
+    "reference_pump_command": 1.0,
+    "cooling_setpoint_sensitivity_per_c": 0.03,
+    "chw_energy_sensitivity_per_c": 0.015,
+    "cooling_share": 0.65,
+    "fan_share": 0.18,
+    "pump_share": 0.1,
+    "aux_share": 0.07,
+    "comfort_ppd_limit": 15.0
+  },
+  "optimization_config": {
+    "population": 16,
+    "iterations": 12,
+    "archive_size": 60,
+    "seed": 42,
+    "horizon_days": 30,
+    "decision_interval_days": 14,
+    "max_maintenance_delay_days": 30,
+    "risk_limit": 0.1,
+    "compromise_weights": [
+      0.25,
+      0.25,
+      0.25,
+      0.25
+    ]
+  },
+  "strategy_config": {
+    "s0_threshold": 0.9,
+    "s2_threshold": 0.7,
+    "s3_base_threshold": 0.7,
+    "hysteresis_fraction": 0.9,
+    "s3_forecast_days": 30,
+    "s3_rul_trigger_days": 30,
+    "scheduled_intervals_days": {
+      "compressor": 365,
+      "coil": 180,
+      "filter": 90,
+      "fan": 365,
+      "pump": 365
+    },
+    "min_service_dwell_days": {
+      "compressor": 30,
+      "coil": 30,
+      "filter": 21,
+      "fan": 30,
+      "pump": 30
+    }
+  },
+  "column_map": {
+    "timestamp": "timestamp",
+    "outdoor_temp_c": "outdoor_temp_C",
+    "load_fraction": "load_fraction",
+    "occupancy": "occupancy",
+    "total_energy_kwh": "hvac_energy_kWh",
+    "cooling_energy_kwh": "cooling_energy_kWh",
+    "fan_energy_kwh": "fan_energy_kWh",
+    "pump_energy_kwh": "pump_energy_kWh",
+    "aux_energy_kwh": "aux_energy_kWh",
+    "zone_setpoint_c": "zone_setpoint_C",
+    "chw_setpoint_c": "chw_setpoint_C",
+    "fan_command": "fan_command",
+    "pump_command": "pump_command",
+    "chiller_cop": "chiller_COP",
+    "coil_ua_ratio": "coil_UA_ratio",
+    "filter_dp_pa": "filter_dp_Pa",
+    "fan_eff_ratio": "fan_eff_ratio",
+    "pump_eff_ratio": "pump_eff_ratio",
+    "maintenance_component": "maintenance_component"
+  },
+  "claim_boundary": "UKF-updated states are measurement-informed only for mapped sensor channels. RUL is probabilistic scenario prognosis based on literature-prior rates and observed/recent stress until independently calibrated to aging/failure histories."
+}

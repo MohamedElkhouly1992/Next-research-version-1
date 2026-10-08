@@ -1,0 +1,2 @@
+timestamp,outdoor_temp_C,load_fraction,occupancy,zone_setpoint_C,chw_setpoint_C,fan_command,pump_command,hvac_energy_kWh,cooling_energy_kWh,fan_energy_kWh,pump_energy_kWh,aux_energy_kWh,chiller_COP,coil_UA_ratio,filter_dp_Pa,fan_eff_ratio,pump_eff_ratio,maintenance_component
+2024-01-01,27.753520804091032,0.4909443945953329,1.0,24.0,6.0,1.0,1.0,779.5479193043227,522.5006056858934,142.81003905200922,78.840639727521,54.906986725437456,4.385385483563141,0.9718667215779985,156.04447837807515,0.9974994349916424,0.9898078395787423,
